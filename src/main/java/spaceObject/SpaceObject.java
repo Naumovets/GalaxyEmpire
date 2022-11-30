@@ -3,7 +3,7 @@ package spaceObject;
 public class SpaceObject {
     private int id;
     private String name;
-    private String breed;
+    private String type;
     private double x;
     private double y;
     private double r;
@@ -13,12 +13,13 @@ public class SpaceObject {
     private String color;
     private SpaceObject relativity;
 
-
-    public SpaceObject(int id,String name, String breed, double x, double y, double r, double vx,
+    //  Конструктор включает в себя по порядку: id, название, тип, координаты, радиус
+    //  проекции скоростей, массу, цвет и объект относительно, которого задаются параметры скорости и тд.
+    public SpaceObject(int id,String name, String type, double x, double y, double r, double vx,
                        double vy, double m, String color, SpaceObject relativity) {
         this.id = id;
         this.name = name;
-        this.breed = breed;
+        this.type = type;
         this.x = x + relativity.getX();
         this.y = y + relativity.getY();
         this.r = r;
@@ -28,12 +29,14 @@ public class SpaceObject {
         this.color = color;
         this.relativity = relativity;
     }
-
-    public SpaceObject(int id,String name, String breed, double x, double y, double r,
+    //  Конструктор включает в себя по порядку: id, название, тип, координаты, радиус
+    //  проекции скоростей, массу, цвет. Объект относительно которого задаются параметры отсуствует, но по умолчанию
+    //  в начале координат находится Солнце, так что будем считать, что объект относительно Солнца.
+    public SpaceObject(int id,String name, String type, double x, double y, double r,
                        double vx, double vy, double m, String color) {
         this.id = id;
         this.name = name;
-        this.breed = breed;
+        this.type = type;
         this.x = x;
         this.y = y;
         this.r = r;
@@ -47,8 +50,8 @@ public class SpaceObject {
         return name;
     }
 
-    public String getBreed() {
-        return breed;
+    public String getType() {
+        return type;
     }
 
     public double getX() {
