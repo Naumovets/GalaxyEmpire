@@ -1,9 +1,22 @@
 package logic;
 
+import spaceObject.SpaceObject;
+
 public class MathFunc {
 
-    public static double F(double m1, double m2, double d ){
-        final double G = 6.67*Math.pow(10,-11);
-        return (G*m1*m2)/Math.pow(d,2);
+    // высчитывает дистанцию
+    public static double distance(SpaceObject a, SpaceObject b){
+        return Math.sqrt( Math.pow(a.getX() - b.getX(),2) + Math.pow(a.getY()-b.getVy(),2) );
     }
+
+    public static double cos(SpaceObject a, SpaceObject b){
+        return (b.getX() - a.getX())/distance(a,b);
+    }
+
+    public static double sin(SpaceObject a, SpaceObject b){
+        return (b.getY() - a.getY())/distance(a,b);
+    }
+
+
+
 }
